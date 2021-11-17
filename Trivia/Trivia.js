@@ -24,15 +24,15 @@ function createQuestions(result) {
     for (let i=0; i < result.results.length ; i++){
         $("#questions").append(`
             <div class="question q${i} mb-3">
-            <p>${result.results[i].question}</p>
+            <p>${i+1} - ${result.results[i].question}</p>
             <form>
             <div class="form-check">
-            <input class="form-check-input" type="radio" name="question${i}" id="true">
-            <label class="form-check-label" for="true">True</label>
+            <input class="form-check-input" type="radio" name="question${i}" id="true${i}">
+            <label class="form-check-label" for="true${i}">True</label>
             </div>
             <div class="form-check">
-            <input class="form-check-input" type="radio" name="question${i}" id="false" >
-            <label class="form-check-label" for="false">False</label>
+            <input class="form-check-input" type="radio" name="question${i}" id="false${i}" >
+            <label class="form-check-label" for="false${i}">False</label>
             </div>
             </div>
             </form>
