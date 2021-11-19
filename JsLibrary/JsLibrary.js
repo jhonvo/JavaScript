@@ -1,8 +1,15 @@
 var _ = {
     map: function(list, callback) {
         let newList = [];
-        for (let i = 0; i < list.length; i++){
-            newList.push(callback(list[i]));
+        if (Array.isArray(list)){
+            for (let i = 0; i < list.length; i++){
+                newList.push(callback(list[i]));
+            }
+        }
+        else{
+            for (let key in list) {
+                newList.push(callback(list[key]));
+            }
         }
         return newList;
     },
@@ -56,4 +63,8 @@ var _ = {
 }
  // you just created a library with 5 methods!
 
+console.log(_.map({one: 1, two: 2, three: 3}, function(num, key){ return num * 3; }));
+console.log(_.reduce([1, 2, 3], function(memo, num){ return memo + num; }, 0));
+console.log(_.find([1, 2, 3, 4, 5, 6], function(num){ return num % 2 == 0; }));
+console.log(_.filter([1, 2, 3, 4, 5, 6], function(num){ return num % 2 == 0; }));
 console.log(_.reject([1, 2, 3, 4, 5, 6], function(num){ return num % 2 == 0; }));
